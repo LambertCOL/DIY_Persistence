@@ -1,0 +1,13 @@
+<mapper namespace="cn.lamb.dao.UserDao">
+
+    <!--sql的唯一标识：namespace.id组成：statementId-->
+    <select id="selectAll" resultMap="cn.lamb.pojo.User">
+        select * from user
+    </select>
+
+    <!--这条SQL需要两个参数，如果用原生的JDBC占位符(?)就无法对应识别，所以还要自定义占位符，规则是：#{参数名}-->
+    <select id="selectByCondition" resultMap="cn.lamb.pojo.User" parameterType="cn.lamb.pojo.User">
+        select * from user where id = #{id} and username = #{username}
+    </select>
+
+</mapper>
